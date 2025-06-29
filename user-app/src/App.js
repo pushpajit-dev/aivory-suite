@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendPasswordResetEmail } from 'firebase/auth';
 import { getFirestore, doc, setDoc, updateDoc, onSnapshot, collection, addDoc, query, where, getDocs, serverTimestamp } from 'firebase/firestore';
-import { getStorage } from "firebase/storage";
+
 
 // --- Configuration ---
 const firebaseConfig = {
