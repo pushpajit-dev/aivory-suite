@@ -4,22 +4,22 @@
     {
       "src": "user-app/package.json",
       "use": "@vercel/static-build",
-      "config": { "distDir": "user-app/build" }
+      "config": { "distDir": "build" }
     },
     {
       "src": "admin-app/package.json",
       "use": "@vercel/static-build",
-      "config": { "distDir": "admin-app/build" }
+      "config": { "distDir": "build" }
     }
   ],
   "routes": [
     {
       "src": "/admin/(.*)",
-      "dest": "/admin-app/build/$1"
+      "dest": "admin-app/build/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "/user-app/build/$1"
+      "dest": "user-app/build/$1"
     }
   ]
 }
