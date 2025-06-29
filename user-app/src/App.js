@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendPasswordResetEmail } from 'firebase/auth';
-import { getFirestore, doc, setDoc, getDoc, updateDoc, onSnapshot, collection, addDoc, query, where, getDocs, orderBy, serverTimestamp } from 'firebase/firestore';
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { getFirestore, doc, setDoc, updateDoc, onSnapshot, collection, addDoc, query, where, getDocs, serverTimestamp } from 'firebase/firestore';
+import { getStorage } from "firebase/storage";
 
 // --- Configuration ---
 const firebaseConfig = {
@@ -14,14 +14,14 @@ const firebaseConfig = {
   appId: "1:376238000912:web:5be92d21336b26353ab395"
 };
 
-const CLIPDROP_API_KEY = '2aee11fbf2f0eff91b4a6b7f433ac6a7e04cb12ad6911aaf552eae2da13e9464e2895c9eb4951ce7208bbd0bf38b4008'; 
+const CLIPDROP_API_KEY = process.env.REACT_APP_CLIPDROP_API_KEY; 
 const QR_CODE_URL = 'https://i.ibb.co/hF1ZZSsF/qr-code.jpg';
 
 // --- Initialize Firebase ---
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
-const storage = getStorage(app);
+
 
 // --- Tool Definitions & Guides ---
 const tools = {
